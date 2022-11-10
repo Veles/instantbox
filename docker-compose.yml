@@ -15,10 +15,16 @@ services:
   frontend:
     image: instantbox/instantbox-frontend:latest
     container_name: instantbox_frontend
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.insta_frontend.rule=Host(`insta.derunix.ru`)
+      - traefik.http.routers.insta_frontend.entrypoints=websecure
+      - traefik.http.routers.insta_frontend.tls.certresolver=myresolver
+      - traefik.http.services.insta_frontend.loadbalancer.server.port=80
     links:
       - server
-    ports:
-      - 10.16.0.1:8080:80
+    expose:
+      80
     networks:
       - instantbox_net
 
