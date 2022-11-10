@@ -6,8 +6,9 @@ services:
     container_name: instantbox_server
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/docker/apps/insta.derunix.ru/manifest.json:/app/manifest.json
     environment:
-      - SERVERURL=
+      - SERVERURL=insta.derunix.ru
     networks:
       - instantbox_net
 
@@ -17,7 +18,7 @@ services:
     links:
       - server
     ports:
-      - 8888:80
+      - 8080:80
     networks:
       - instantbox_net
 
