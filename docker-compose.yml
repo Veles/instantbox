@@ -4,6 +4,7 @@ services:
   server:
     image: instantbox/instantbox:latest
     container_name: instantbox_server
+    restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/docker/apps/insta.derunix.ru/manifest.json:/app/manifest.json
@@ -15,6 +16,7 @@ services:
   frontend:
     image: instantbox/instantbox-frontend:latest
     container_name: instantbox_frontend
+    restart: always
     labels:
       - traefik.enable=true
       - traefik.http.routers.insta_frontend.rule=Host(`insta.derunix.ru`)
@@ -30,6 +32,7 @@ services:
 
   cron:
     image: instantbox/cron:latest
+    restart: always
     container_name: instantbox_cron
     links:
       - frontend
