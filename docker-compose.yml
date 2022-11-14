@@ -43,3 +43,6 @@ services:
 
 networks:
   instantbox_net:
+   default:
+      external:
+         name: docker_default
