@@ -29,6 +29,7 @@ services:
       - 80
     networks:
       - instantbox_net
+      - docker_default
 
   cron:
     image: instantbox/cron:latest
